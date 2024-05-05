@@ -1,0 +1,33 @@
+package com.vyom.vyomlib;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import com.vyom.vyomlib.dto.UserModel;
+import com.vyom.vyomlib.entity.Role;
+import com.vyom.vyomlib.entity.User;
+import com.vyom.vyomlib.repo.Rolerepo;
+import com.vyom.vyomlib.repo.Userrepository;
+import com.vyom.vyomlib.service.UserService;
+
+@SpringBootApplication
+public class HealthCareManagmentApplication  {
+
+	
+	
+	
+	
+	public static void main(String[] args) {
+		
+		SpringApplication.run(HealthCareManagmentApplication.class, args);
+	}
+
+	
+	
+}

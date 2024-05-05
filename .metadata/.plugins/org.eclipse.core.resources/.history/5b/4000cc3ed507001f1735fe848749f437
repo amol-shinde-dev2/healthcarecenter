@@ -1,0 +1,21 @@
+version: "3.8"
+services:
+  server:
+   build: .
+   command: ["java", "-jar", "HealthCareManagement.jar"]
+   ports:
+    - 8085:8080
+   restart: always
+   depends_on:
+    - mysqldb
+  mysqldb:
+     image: "mysql"
+     ports:
+      - 3307:3306
+     restart: always
+     environment:
+      MYSQL_DATABASE: testdocker
+      MYSQL_ROOT_PASSWORD: root
+  
+ 
+     

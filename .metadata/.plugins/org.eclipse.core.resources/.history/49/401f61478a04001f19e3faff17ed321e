@@ -1,0 +1,21 @@
+version: "3.8"
+services:
+  server:
+   build: .
+   restart: always
+   ports:
+    - 8088:8085
+   depends_on:
+    - mysqldb
+  mysqldb:
+     image: "mysql:8.0.33"
+     restart: always
+     ports:
+      - 3307:3307
+     environment:
+      MYSQL_DATABASE: healthcare
+      
+      MYSQL_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root
+      
+     

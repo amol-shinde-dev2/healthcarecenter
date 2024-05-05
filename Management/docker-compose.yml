@@ -1,0 +1,10 @@
+version: "3.8"
+services:
+  server:
+   build: .
+   volumes:
+      - ./target:/app
+   command: ["java", "-jar", "/app/management.jar"]
+   ports:
+    - 8086:8089
+   restart: always

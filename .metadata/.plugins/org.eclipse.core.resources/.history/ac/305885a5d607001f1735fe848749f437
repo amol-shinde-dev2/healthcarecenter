@@ -1,0 +1,20 @@
+version: "3.8"
+services:
+  server:
+   build:
+    context: .
+    dockerfile: Dockerfile
+   restart: always
+   depends_on:
+    - mysqldb
+  mysqldb:
+     image: mysql:latest
+     ports:
+      - 3307:3306
+     restart: always
+     environment:
+      MYSQL_DATABASE: testdocker
+      MYSQL_ROOT_PASSWORD: root
+  
+ 
+     

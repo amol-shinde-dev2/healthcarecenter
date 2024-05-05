@@ -1,0 +1,6 @@
+version: "3.8"
+services:
+  server:
+   ports:
+    - 8089:8089
+   restart: always

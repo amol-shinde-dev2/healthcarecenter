@@ -1,0 +1,27 @@
+version: "3.8"
+services:
+  mysqldb:
+     image: mysql:latest
+     ports:
+      - "3307:3306"
+     restart: always
+     environment:
+      MYSQL_DATABASE: testdocker
+      MYSQL_ROOT_PASSWORD: root
+  server:
+   build:
+    context: .
+    dockerfile: Dockerfile
+   restart: always
+   ports:
+    - "8085:8080" 
+   environment:
+    SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/testdocker
+    SPRING_DATASOURCE_USERNAME: root
+    SPRING_DATASOURCE_PASSWORD: root
+   depends_on:
+    - mysqldb
+  
+  
+ 
+     

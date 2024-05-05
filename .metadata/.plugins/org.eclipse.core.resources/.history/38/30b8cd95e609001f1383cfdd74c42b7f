@@ -1,0 +1,12 @@
+INSERT INTO user (username, password) VALUES
+    ('Allen', '123'),
+    ('Bob', '123');
+
+INSERT INTO role (rolename) VALUES
+    ('ROLE_ADMIN'),
+    ('ROLE_USER');
+
+INSERT INTO accessroles (user_id,role_id) VALUES
+    ('1','1'),
+    ('1','2'),
+     ('2','1')	;

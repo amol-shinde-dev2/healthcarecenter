@@ -1,0 +1,8 @@
+package com.vyom.vyomlib.service;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class KafkaService {
+
+}

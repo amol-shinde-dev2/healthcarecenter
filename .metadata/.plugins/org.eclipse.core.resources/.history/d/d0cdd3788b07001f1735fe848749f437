@@ -1,0 +1,18 @@
+CREATE DATABASE IF NOT EXISTS healthcare;
+
+USE healthcare;
+
+CREATE TABLE user
+(
+    uid INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    username VARCHAR(255) NOT NULL,
+    password CHAR(60) NOT NULL
+);
+INSERT INTO user (uid, username, password) VALUES (1, 'Allen', '123'), (2, 'Bob', '123');
+
+CREATE TABLE role
+(
+    roleid INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    rolename VARCHAR(45) NOT NULL
+);
+INSERT INTO role (roleid, rolename) VALUES (11, 'ROLE_ADMIN'), (12, 'ROLE_USER');R');

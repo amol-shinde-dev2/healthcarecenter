@@ -1,0 +1,9 @@
+FROM openjdk:17-jdk
+COPY /target/HealthCareManagement.jar /app/HealthCareManagement.jar
+EXPOSE 8085:8080
+ENTRYPOINT [ "java" ,"-jar","/app/HealthCareManagement.jar" ]
+
+FROM mysql:latest AS mysql
+# Set environment variables for MySQL (optional)
+ENV MYSQL_ROOT_PASSWORD=root
+ENV MYSQL_DATABASE=testdocker

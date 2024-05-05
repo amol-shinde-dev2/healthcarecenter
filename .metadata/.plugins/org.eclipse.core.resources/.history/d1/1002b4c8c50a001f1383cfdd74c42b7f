@@ -1,0 +1,22 @@
+package com.vyom.vyomlib.service;
+
+import org.apache.kafka.clients.admin.NewTopic;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.stereotype.Service;
+
+@Service
+public class KafkaService {
+
+	@Autowired
+	KafkaTemplate<String, Object> template;
+	
+	@Autowired
+	NewTopic topic;
+	
+	public void sendMessage(String message) {
+		
+		template.send();
+	}
+	
+}

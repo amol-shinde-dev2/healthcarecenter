@@ -1,0 +1,5 @@
+FROM openjdk:17-jdk
+COPY /target/HealthCareManagement.jar HealthCareManagement.jar
+EXPOSE 8085:8080
+ENTRYPOINT [ "java" ,"-jar","HealthCareManagement.jar" ]
+

@@ -1,0 +1,61 @@
+package com.vyom.vyomlib;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import com.vyom.vyomlib.repo.Rolerepo;
+import com.vyom.vyomlib.repo.Userrepository;
+import com.vyom.vyomlib.service.UserService;
+
+@SpringBootApplication
+public class HealthCareManagmentApplication implements CommandLineRunner{
+	
+	@Autowired
+	Rolerepo rolerepo;
+	
+	@Autowired
+	UserService userservice;
+	
+	@Autowired
+	Userrepository userrepo;
+	
+	
+	
+	@Value("${hospital.admin.username}")
+	public String username;
+	
+	@Value("${hospital.admin.password}")
+	public String password;
+
+	public static void main(String[] args) {
+		SpringApplication.run(HealthCareManagmentApplication.class, args);
+	}
+
+	@Override
+	public void run(String... args) throws Exception {
+		// TODO Auto-generated method stub
+		List<Role> roles=new ArrayList<>();
+		Role r1=new Role();
+		r1.setRolename("ROLE_ADMIN");
+		Role r2=new Role();
+		r2.setRolename("ROLE_USER");
+	
+		User adminUser=userrepo.findByUsername(username);
+		if(rolerepo.findAll().isEmpty()) {
+			roles.add(r1);
+			roles.add(r2);
+			rolerepo.saveAll(roles);
+		}
+		if(userrepo.findByUsername(username) == null) {
+			Role adminrole=rolerepo.findByRolename("ROLE_ADMIN");
+System.out.println(adminrole);
+			User superuserwithoutrole=userservice.create(new UserModel(username,password,null));
+			
+			superuserwithoutrole.addRole(adminrole);
+			userrepo.save(superuserwithoutrole);
+	}
+
+}
